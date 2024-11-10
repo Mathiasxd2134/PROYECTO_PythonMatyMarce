@@ -16,4 +16,3 @@ Esta app nos permite a los usuarios publicar comentarios y reseñas sobre pelíc
 ## Instalación
 1. Clona el repositorio:
    https://github.com/Mathiasxd2134/PROYECTO_PythonMatyMarce.git
-2. 
