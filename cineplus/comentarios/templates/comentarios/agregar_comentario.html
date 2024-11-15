@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Agregar Comentario</title>
+</head>
+<body>
+    <h1>Agregar un Comentario para "{{ reseña.titulo }}"</h1>
+
+    <form action="{% url 'agregar_comentario' reseña.id %}" method="post">
+        {% csrf_token %}
+        <label for="texto">Comentario:</label><br>
+        <textarea name="texto" rows="4" cols="50" required></textarea><br>
+        <button type="submit">Enviar comentario</button>
+    </form>
+
+    <a href="{% url 'detalle_reseña' reseña.id %}">Volver a la reseña</a>
+</body>
+</html>

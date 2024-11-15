@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Detalle de la Reseña</title>
+</head>
+<body>
+    <h1>{{ reseña.titulo }}</h1>
+    <p><strong>Descripción:</strong> {{ reseña.descripcion }}</p>
+    <p><strong>Fecha:</strong> {{ reseña.fecha_creacion }}</p>
+
+    <h2>Comentarios</h2>
+    {% if comentarios %}
+        <ul>
+            {% for comentario in comentarios %}
+                <li>
+                    <p>{{ comentario.texto }}</p>
+                    <small>por {{ comentario.autor }} el {{ comentario.fecha }}</small>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No hay comentarios.</p>
+    {% endif %}
+
+    <h3>Agregar un comentario</h3>
+    <form action="{% url 'agregar_comentario' reseña.id %}" method="post">
+        {% csrf_token %}
+        <textarea name="texto" rows="4" cols="50" required></textarea><br>
+        <button type="submit">Enviar comentario</button>
+    </form>
+
+    <a href="{% url 'lista_reseñas' %}">Volver a la lista de reseñas</a>
+</body>
+</html>

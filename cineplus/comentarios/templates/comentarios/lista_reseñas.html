@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Reseñas</title>
+</head>
+<body>
+    <h1>Lista de Reseñas</h1>
+
+    {% if reseñas %}
+        <ul>
+            {% for reseña in reseñas %}
+                <li>
+                    <h2>{{ reseña.titulo }}</h2>
+                    <p>{{ reseña.descripcion|truncatewords:20 }}</p> <!-- Muestra un resumen corto -->
+                    <a href="{% url 'detalle_reseña' reseña.id %}">Ver detalles</a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No hay reseñas disponibles.</p>
+    {% endif %}
+
+    <a href="{% url 'crear_reseña' %}">Agregar nueva reseña</a>
+</body>
+</html>
