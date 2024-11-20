@@ -18,6 +18,7 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
+    path('', views.lista_reseñas, name='lista_reseñas'),
     path('reseña/<int:reseña_id>/', views.detalle_reseña, name='detalle_reseña'),
     path('reseña/<int:reseña_id>/comentar/', views.agregar_comentario, name='agregar_comentario'),
 ]

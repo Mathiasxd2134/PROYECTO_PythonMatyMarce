@@ -10,7 +10,8 @@ def lista_reseñas(request):
 
 def detalle_reseña(request, reseña_id):
     reseña = get_object_or_404(Reseña, pk=reseña_id)
-    return render(request, 'comentarios/detalle_reseña.html', {'reseña': reseña})
+    comentarios = reseña.comentarios.all()
+    return render(request, 'comentarios/detalle_reseña.html',{'reseña': reseña, 'comentarios': comentarios})
 
 @login_required
 def agregar_comentario(request, reseña_id):
