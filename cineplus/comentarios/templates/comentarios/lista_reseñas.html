@@ -7,19 +7,55 @@
 <body>
     <h1>CINEPLUS</h1>
 
+    <!-- Formulario para crear una nueva reseña -->
+    <h2>Crear una nueva reseña</h2>
+    <form method="post" action="">
+        {% csrf_token %}
+        {{ reseña_form.as_p }}
+        <button type="submit" name="crear_reseña">Crear Reseña</button>
+    </form>
+
+    <hr>
+
+    <!-- Listado de reseñas con formularios de comentarios -->
     {% if reseñas %}
+        <h2>Reseñas</h2>
         <ul>
             {% for reseña in reseñas %}
                 <li>
-                    <h2>{{ reseña.titulo }}</h2>
-                    <p>{{ reseña.descripcion|truncatewords:20 }}</p> <!-- Muestra un resumen corto -->
-                    <a href="{% url 'detalle_reseña' reseña.id %}">Ver detalles</a>
+                    <h3>{{ reseña.titulo }}</h3>
+                    <p>{{ reseña.descripcion }}</p>
+                    <p><strong>Autor:</strong> {{ reseña.autor }}</p>
+
+                    <!-- Formulario para agregar un comentario -->
+                    <h4>Agregar un comentario</h4>
+                    <form method="post" action="">
+                        {% csrf_token %}
+                        {{ comentario_form.as_p }}
+                        <input type="hidden" name="reseña_id" value="{{ reseña.id }}">
+                        <button type="submit" name="crear_comentario">Comentar</button>
+                    </form>
+
+                    <!-- Lista de comentarios -->
+                    <h4>Comentarios</h4>
+                    {% if reseña.comentarios.all %}
+                        <ul>
+                            {% for comentario in reseña.comentarios.all %}
+                                <li>
+                                    <p>{{ comentario.texto }}</p>
+                                    <small><strong>Por:</strong> {{ comentario.autor }} - {{ comentario.fecha_creacion }}</small>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    {% else %}
+                        <p>No hay comentarios.</p>
+                    {% endif %}
                 </li>
+                <hr>
             {% endfor %}
         </ul>
     {% else %}
         <p>No hay reseñas disponibles.</p>
     {% endif %}
-
 </body>
 </html>

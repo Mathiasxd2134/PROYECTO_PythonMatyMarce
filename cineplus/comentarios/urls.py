@@ -19,6 +19,7 @@ from . import views
 
 urlpatterns = [
     path('', views.lista_reseñas, name='lista_reseñas'),
+    path('reseña/nueva/', views.crear_reseña, name='crear_reseña'),
     path('reseña/<int:reseña_id>/', views.detalle_reseña, name='detalle_reseña'),
     path('reseña/<int:reseña_id>/comentar/', views.agregar_comentario, name='agregar_comentario'),
 ]

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Crear Reseña</title>
+</head>
+<body>
+    <h1>Crear Nueva Reseña</h1>
+
+    <form action="{% url 'crear_reseña' %}" method="post">
+        {% csrf_token %}
+        <label for="titulo">Título:</label><br>
+        <input type="text" name="titulo" required><br><br>
+
+        <label for="descripcion">Descripción:</label><br>
+        <textarea name="descripcion" rows="4" cols="50" required></textarea><br><br>
+
+        <button type="submit">Crear Reseña</button>
+    </form>
+
+    <a href="{% url 'lista_reseñas' %}">Volver a la lista de reseñas</a>
+</body>
+</html>
