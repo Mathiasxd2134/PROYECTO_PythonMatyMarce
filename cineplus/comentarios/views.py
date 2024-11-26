@@ -31,14 +31,22 @@ def agregar_comentario(request, reseña_id):
 @login_required
 def crear_reseña(request):
     if request.method == 'POST':
+        # Obtener datos del formulario
         titulo = request.POST.get('titulo')
         descripcion = request.POST.get('descripcion')
+        imagen = request.FILES.get('imagen')  # Obtener la imagen del formulario
+        
+        # Crear una nueva reseña
         reseña = Reseña.objects.create(
             titulo=titulo,
             descripcion=descripcion,
-            autor=request.user
+            autor=request.user,
+            imagen=imagen  # Guardar la imagen en la reseña
         )
+        
+        # Redirigir a la lista de reseñas después de crearla
         return redirect('lista_reseñas')
+    
     return render(request, 'comentarios/crear_reseña.html')
 
 @login_required

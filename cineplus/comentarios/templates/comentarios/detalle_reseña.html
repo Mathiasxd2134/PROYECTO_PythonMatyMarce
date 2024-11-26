@@ -13,6 +13,11 @@
     <p><strong>Descripción:</strong> {{ reseña.descripcion }}</p>
     <p><strong>Fecha:</strong> {{ reseña.fecha_creacion }}</p>
 
+    <!-- Aquí agregamos la imagen de la reseña -->
+    {% if reseña.imagen %}
+        <img src="{{ reseña.imagen.url }}" alt="Imagen de la reseña" style="max-width: 100%; height: auto;">
+    {% endif %}
+
     <h2>Comentarios</h2>
     {% if comentarios %}
         <ul>

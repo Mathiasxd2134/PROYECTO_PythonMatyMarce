@@ -17,9 +17,19 @@ Including another URLconf
 from django.urls import path
 from . import views
 
+from django.urls import path
+from . import views
+from django.conf import settings
+from django.conf.urls.static import static
+
 urlpatterns = [
     path('', views.lista_reseñas, name='lista_reseñas'),
     path('reseña/nueva/', views.crear_reseña, name='crear_reseña'),
     path('reseña/<int:reseña_id>/', views.detalle_reseña, name='detalle_reseña'),
     path('reseña/<int:reseña_id>/comentar/', views.agregar_comentario, name='agregar_comentario'),
+    path('imagenes_reseñas/',views.detalle_reseña, name='imagenes_reseñas/')
 ]
+
+# Configuración para servir archivos multimedia en desarrollo
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

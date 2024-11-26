@@ -5,19 +5,20 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/estilos.css' %}">
     <title>CINEPLUS</title>
-    <meta charset="UTF-8">
-    <title>CINEPLUS</title>
 </head>
 <body>
     <h1>Crear Nueva Reseña</h1>
 
-    <form action="{% url 'crear_reseña' %}" method="post">
+    <form action="{% url 'crear_reseña' %}" method="post" enctype="multipart/form-data">
         {% csrf_token %}
         <label for="titulo">Título:</label><br>
         <input type="text" name="titulo" required><br><br>
 
         <label for="descripcion">Descripción:</label><br>
         <textarea name="descripcion" rows="4" cols="50" required></textarea><br><br>
+
+        <label for="imagen">Imagen (opcional):</label><br>
+        <input type="file" name="imagen"><br><br>
 
         <button type="submit">Crear Reseña</button>
     </form>

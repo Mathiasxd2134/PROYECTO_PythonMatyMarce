@@ -13,7 +13,7 @@
 
     <!-- Formulario para crear una nueva reseña -->
     <h2>Crear una nueva reseña</h2>
-    <form method="post" action="">
+    <form method="post" action="" enctype="multipart/form-data">
         {% csrf_token %}
         {{ reseña_form.as_p }}
         <button type="submit" name="crear_reseña">Crear Reseña</button>
@@ -30,6 +30,11 @@
                     <h3>{{ reseña.titulo }}</h3>
                     <p>{{ reseña.descripcion }}</p>
                     <p><strong>Autor:</strong> {{ reseña.autor }}</p>
+
+                    <!-- Mostrar la imagen de la reseña si existe -->
+                    {% if reseña.imagen %}
+                        <img src="{{ reseña.imagen.url }}" alt="Imagen de la reseña" style="max-width: 300px; height: auto;">
+                    {% endif %}
 
                     <!-- Formulario para agregar un comentario -->
                     <h4>Agregar un comentario</h4>
