@@ -20,10 +20,10 @@ Esta app nos permite a los usuarios publicar comentarios y reseñas sobre pelíc
 ## Instalación
 1. Clona el repositorio:
    https://github.com/Mathiasxd2134/PROYECTO_PythonMatyMarce.git
-2. Crear un entorno virtual, de pereferencia llamarlo 'cine'
+2. Crear un entorno virtual, de preferencia llamarlo 'cine'
 3. Activar el entorno virtual
 4. Entrar al entorno virtual desde la Terminal o Consola
 5. Entrar a la carpeta con el nombre del repositorio clonado
 6. Installar Django
 7. Instalar los requirements.txt
-8. Ejecutar python manage.py runserver para ver correr el proyecto y entrar al localhost
+8. Entrar a la carpeta llamada cineplus y ejecutar python manage.py runserver para correr el proyecto y entrar al localhost
